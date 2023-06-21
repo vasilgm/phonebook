@@ -56,6 +56,19 @@ def remove():
     print(f'\nКонтакт {del_cnt.get("name")} успешно удален из книги!\n')
     print('=' * 200 + '\n')
 
+def change():
+    result = search()
+    show_contacts(result)
+    index = int(input('Введите ID контакта, который хотите изменить:'))
+    name = input('Введите измененное имя контакта: ')
+    phone = input('Введите измененный телефон контакта: ')
+    comment = input('Введите измененный коментарий к контакту: ')
+    phone_book[index] = {'name': name, 'phone': phone, 'comment':comment}
+    print('\n' + '=' * 200)
+    print(f'\nКонтакт успешно изменен!\n')
+    print('=' * 200 + '\n')
+
+
 def menu() -> int:
     main_menu = '''Главное меню:
     1. Открыть файл
@@ -88,7 +101,7 @@ while True:
             result = search()
             show_contacts(result)
         case 6:
-            pass
+            change()
         case 7:
             remove()
         case 8:
